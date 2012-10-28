@@ -1,0 +1,33 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+@namespace window "window.*";
+
+window|Window {
+	skin-class: ClassReference("skins.WindowSkin");
+	closeButtonSkin: ClassReference("skins.WindowCloseButtonSkin");
+	closeButtonPadding: 2;
+	backgroundColor: #353551;
+	borderdColor: #9191B3;
+	borderRadius: 6;
+}
+
+.windowDescription {
+	textAlign: center;
+	fontSize: 16;
+	fontWeight: normal;
+	color:#CCCCCC;
+}
+
+.windowMessage {
+	textAlign: center;
+	fontSize: 16;
+	fontWeight: bold;
+	color:#CCCCCC;
+}
+
+.windowButton {
+	fontSize: 16;
+	fontWeight: bold;
+}

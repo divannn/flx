@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sets custom cursor for some component.-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	minWidth="955"
+	minHeight="600"
+	creationComplete="init();">
+
+	<fx:Script>
+		<![CDATA[
+			[Embed(source="/customCursor/tool_cursor.png")]
+			private var toolCursorClass:Class;
+
+			private function init():void {
+				new CursorSwitcher(panel, toolCursorClass).install();
+			}
+		]]>
+	</fx:Script>
+	<mx:Form id="panel"
+		x="100"
+		y="50"
+		width="300"
+		height="200"
+		dropShadowVisible="true"
+		backgroundColor="#BFB3C9">
+		<mx:FormItem label="Label1:">
+			<s:TextInput />
+		</mx:FormItem>
+		<mx:FormItem label="Label2:">
+			<s:TextInput />
+		</mx:FormItem>
+		<mx:FormItem label="Label3:">
+			<s:CheckBox label="CheckBox" />
+		</mx:FormItem>
+		<mx:FormItem label="Label4:">
+			<s:HSlider />
+		</mx:FormItem>
+	</mx:Form>
+	<s:Button x="300"
+		y="300"
+		label="OK" />
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

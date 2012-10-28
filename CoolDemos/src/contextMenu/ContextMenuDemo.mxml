@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--sdk 4.1-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	creationComplete="initApp();">
+	<s:layout>
+		<s:VerticalLayout gap="10"
+			paddingLeft="20"
+			paddingTop="20" />
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+
+			private var listMenuItem:ContextMenuItem = new ContextMenuItem("Copy Selected");
+
+			private function initApp():void {
+				addGlobalMenu();
+				addListMenu();
+				addImageMenu();
+			}
+
+			private function addGlobalMenu():void {
+				var globalMenu:ContextMenu = new ContextMenu()
+				globalMenu.addEventListener(ContextMenuEvent.MENU_SELECT,
+						function(e:ContextMenuEvent):void {
+					trace("menu opened");
+				});
+				var customMenuItem1:ContextMenuItem = new ContextMenuItem('Click Me');
+				customMenuItem1.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT,
+						function(e:ContextMenuEvent):void {
+					trace("item selected");
+					Alert.show("Clicked on: " + e.mouseTarget, "Info");
+
+				});
+				globalMenu.hideBuiltInItems();
+				var customMenuItem2:ContextMenuItem = new ContextMenuItem("Flex SDK: " + mx_internal::VERSION,
+						true /*add separator before*/, false);
+				var customMenuItem3:ContextMenuItem = new ContextMenuItem("Player: " + Capabilities.version,
+						false, false);
+				globalMenu.customItems = [customMenuItem1, customMenuItem2,
+						customMenuItem3];
+				FlexGlobals.topLevelApplication.contextMenu = globalMenu;
+			}
+
+			private function addListMenu():void {
+				var listMenu:ContextMenu = new ContextMenu()
+				listMenuItem.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT,
+						function(e:ContextMenuEvent):void {
+					System.setClipboard(list.selectedItem);
+				});
+
+				listMenu.hideBuiltInItems();
+				listMenu.customItems = [listMenuItem];
+				list.contextMenu = listMenu;
+			}
+
+			//use image as link.
+			private function addImageMenu():void {
+				var urlReq:URLRequest = new URLRequest();
+				urlReq.url = "http://www.adobe.com/go/flex";
+				var imageContextMenu:ContextMenu = new ContextMenu();
+				imageContextMenu.hideBuiltInItems();
+				imageContextMenu.link = urlReq;
+				img.contextMenu = imageContextMenu;
+			}
+		]]>
+	</fx:Script>
+	<fx:Binding source="list.selectedItem"
+		destination="listMenuItem.enabled">
+
+	</fx:Binding>
+
+	<s:Label text="Right click on application or components to open their context menus" />
+	<s:List id="list">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:String>item1</fx:String>
+				<fx:String>item2</fx:String>
+				<fx:String>item3</fx:String>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:List>
+	<mx:Image id="img"
+		source="@Embed(source='flex_logo.jpg')" />
+
+</s:Application>

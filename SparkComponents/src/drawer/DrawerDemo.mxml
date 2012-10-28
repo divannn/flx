@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:local="drawer.*"
+	xmlns:views="drawer.views.*"
+	backgroundColor="#EEEEEE"
+	width="600"
+	height="400">
+
+	<views:MainView left="8"
+		right="8"
+		top="8"
+		bottom="8" />
+
+	<local:Drawer left="40"
+		right="40"
+		bottom="0"
+		skinClass="drawer.skins.DrawerSkin">
+		<views:SubView left="8"
+			right="8"
+			top="8"
+			bottom="8" />
+	</local:Drawer>
+
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

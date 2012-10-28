@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	width="100%"
+	xmlns:window="window.*">
+
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			public var yesButtonLabel:String = "Yes";
+
+			[Bindable]
+			public var noButtonLabel:String = "No";
+
+			[Bindable]
+			public var okButtonEnabled:Boolean = true;
+
+
+			//		private function noButtonClickHandler(event:MouseEvent):void {
+			//			dispatchEvent(new DialogEvent(DialogEvent.CANCEL));
+			//		}
+			//
+			//		private function okButtonClickHandler(event:MouseEvent):void {
+			//			dispatchEvent(new DialogEvent(DialogEvent.OK));
+			//		}
+		]]>
+	</fx:Script>
+
+	<!--<fx:Metadata>
+		[Event(name="okClicked", type="com.devexperts.flexfront.common.gui.components.events.DialogEvent")]
+		[Event(name="cancelClicked", type="com.devexperts.flexfront.common.gui.components.events.DialogEvent")]
+	</fx:Metadata>-->
+
+	<s:layout>
+		<s:HorizontalLayout horizontalAlign="center"
+			gap="10" />
+	</s:layout>
+
+	<window:WindowButton enabled="{okButtonEnabled}"
+		label="{yesButtonLabel}" />
+	<!--click="okButtonClickHandler(event)"-->
+	<window:WindowButton label="{noButtonLabel}" />
+	<!--click="noButtonClickHandler(event)"-->
+</s:Group>

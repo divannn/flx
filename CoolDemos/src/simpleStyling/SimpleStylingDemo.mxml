@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--sdk 4.1-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	backgroundColor="#333333"
+	viewSourceURL="srcview/index.html">
+	<s:layout>
+		<s:HorizontalLayout />
+	</s:layout>
+
+	<fx:Style source="ChromeColor.css" />
+
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+
+			protected function button_clickHandler(event:MouseEvent):void {
+				Alert.show("Dark style Alert box!", "Alert box title",
+						Alert.OK | Alert.CANCEL);
+			}
+		]]>
+	</fx:Script>
+
+	<s:Panel width="100%"
+		height="100%"
+		title="Components Panel">
+		
+		<s:TileGroup width="100%"
+			horizontalCenter="0"
+			verticalCenter="0"
+			verticalAlign="middle"
+			horizontalAlign="center">
+
+			<s:Button id="button"
+				toolTip="Open to see alert box"
+				label="Show alert"
+				click="button_clickHandler(event)" />
+
+			<s:CheckBox label="CheckBox" />
+
+			<s:RadioButton label="RadioButton" />
+
+			<s:TextInput text="some text" />
+
+			<s:ComboBox>
+				<s:dataProvider>
+					<s:ArrayCollection>
+						<fx:String>item1</fx:String>
+						<fx:String>item2</fx:String>
+						<fx:String>item3</fx:String>
+					</s:ArrayCollection>
+				</s:dataProvider>
+			</s:ComboBox>
+
+			<s:HSlider id="sl"/>
+
+			<s:HScrollBar />
+
+			<mx:TabNavigator height="100"
+				width="200">
+				<s:NavigatorContent label="Tab 1"
+					width="100%"
+					height="100%">
+				</s:NavigatorContent>
+				<s:NavigatorContent label="Tab 2"
+					width="100%"
+					height="100%">
+				</s:NavigatorContent>
+				<s:NavigatorContent label="Tab 3"
+					width="100%"
+					height="100%">
+				</s:NavigatorContent>
+			</mx:TabNavigator>
+
+			<mx:Accordion height="100"
+				width="130">
+				<s:NavigatorContent label="Accordion Pane 1"
+					width="100%"
+					height="100%">
+				</s:NavigatorContent>
+				<s:NavigatorContent label="Accordion Pane 2"
+					width="100%"
+					height="100%">
+				</s:NavigatorContent>
+			</mx:Accordion>
+
+		</s:TileGroup>
+	</s:Panel>
+
+</s:Application>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--sdk 4.1-->
+<s:Application xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark">
+
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+
+			protected function deleteSportsman_clickHandler(event:MouseEvent):void {
+				Alert.yesLabel = "Удалить";
+				Alert.noLabel = "Не надо";
+				Alert.show("Удалить заказ?", "Подтверждение",
+						Alert.YES | Alert.NO, this,
+						deleteSportsmanDialogHandler);
+			}
+
+			protected function deleteSportsmanDialogHandler(e:CloseEvent):void {
+				trace("ret val: " + e.detail);
+				if (e.detail == Alert.YES) {
+					//do delete.
+				}
+			}
+		]]>
+	</fx:Script>
+	<s:Button id="deleteSportsMan"
+		x="200"
+		y="100"
+		label="Удалить Заказ"
+		click="deleteSportsman_clickHandler(event);" />
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

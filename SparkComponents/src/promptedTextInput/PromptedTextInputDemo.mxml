@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:promptedTextInput="promptedTextInput.*"
+	width="100%"
+	height="100%">
+
+	<fx:Script>
+		<![CDATA[
+			protected function onClear(event:MouseEvent):void {
+				firstNameInput.text = "";
+				lastNameInput.text = "";
+			}
+		]]>
+	</fx:Script>
+
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center"
+			paddingTop="10" />
+	</s:layout>
+
+	<s:VGroup gap="10"
+		horizontalAlign="center">
+		<promptedTextInput:PromptedTextInput id="firstNameInput"
+			prompt="First Name"
+			width="150"
+			skinClass="promptedTextInput.PromptedTextInputSkin" />
+		<promptedTextInput:PromptedTextInput id="lastNameInput"
+			prompt="Last Name"
+			width="150"
+			skinClass="promptedTextInput.PromptedTextInputSkin" />
+		<s:HGroup horizontalAlign="center">
+			<s:Button label="Submit"
+				width="75" />
+			<s:Button label="Clear"
+				click="onClear(event)"
+				width="75" />
+		</s:HGroup>
+	</s:VGroup>
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

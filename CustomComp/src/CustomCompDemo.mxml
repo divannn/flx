@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	minWidth="955"
+	minHeight="600"
+	xmlns:local="*">
+
+	<s:layout>
+		<s:HorizontalLayout gap="2" />
+	</s:layout>
+
+	<fx:Script>
+		<![CDATA[
+			protected function button1_clickHandler(event:MouseEvent):void {
+				//c1.backgroundColor=0x0ffff0;
+				trace(c1.scaleX);
+				c1.width += 10;
+			}
+		]]>
+	</fx:Script>
+
+
+	<local:Custom1 id="c1"
+		backgroundColor="#FF0000" />
+	<!--<local:Custom1 backgroundColor="#00FF00" />
+	<local:Custom1 backgroundColor="#0000FF" />-->
+
+	<s:Button label="Click to set the color"
+		click="button1_clickHandler(event)" />
+	<local:C2 id="С2"/>
+</s:Application>

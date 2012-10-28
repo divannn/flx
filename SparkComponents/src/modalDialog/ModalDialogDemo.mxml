@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shows modal dialog. Closes it by ESC.-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark">
+	<s:layout>
+		<s:VerticalLayout />
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import mx.core.IFlexDisplayObject;
+			import mx.managers.PopUpManager;
+
+			private function showDialog():void {
+				//way1.
+				var dialog:MyDialog = new MyDialog();
+				dialog.showCloseButton = false;
+				PopUpManager.addPopUp(dialog, this, true);
+				PopUpManager.centerPopUp(dialog);
+
+				//way2. 
+				//				var dialog:IFlexDisplayObject;
+				//				dialog = PopUpManager.createPopUp(this, MyDialog, true); // popup modal dialog
+				//				PopUpManager.centerPopUp(dialog);
+
+				//we must set focus on dialog - otherwise ist'possible to open several popups by perssing space on button.
+				dialog.setFocus();
+			}
+		]]>
+	</fx:Script>
+	<s:Button label="Open Modal Dialog"
+		click="showDialog()" />
+	<s:TextInput />
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

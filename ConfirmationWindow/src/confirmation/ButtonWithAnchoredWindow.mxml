@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:confirmation="confirmation.*">
+
+	<fx:Declarations>
+		<confirmation:PopUpAnchorOpener anchor="{popUp}"
+			trigger="{button}" />
+	</fx:Declarations>
+	<s:Button id="button"
+		width="100%"
+		height="100%"
+		label="Open Anchored Confirmation" />
+
+	<confirmation:WindowPopUpAnchor id="popUp"
+		width="100%"
+		height="100%"
+		popUpPosition="below">
+		<confirmation:SimpleConfirmation message="Anchored to button"
+			description="Some message"
+			clickOutsideAutoClose="true" />
+	</confirmation:WindowPopUpAnchor>
+</s:Group>

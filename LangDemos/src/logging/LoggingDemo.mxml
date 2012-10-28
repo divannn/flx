@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--sdk 4.1-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	layout="vertical"
+	minWidth="955"
+	minHeight="600"
+	creationComplete="initLogging();">
+	<mx:Script>
+		<![CDATA[
+			import mx.logging.ILogger;
+			import mx.logging.Log;
+			import mx.logging.LogEventLevel;
+			import mx.logging.targets.TraceTarget;
+
+			private static var LOG:ILogger = Log.getLogger("MyCustomCategory");
+
+			private function initLogging():void {
+				//use trace target to console (via trace()).
+				var logTarget:TraceTarget = new TraceTarget();
+				//logTarget.filters = ["mx.rpc.*", "mx.messaging.*"];
+				logTarget.level = LogEventLevel.ERROR;
+				logTarget.includeDate = true;
+				logTarget.includeTime = true;
+				logTarget.includeCategory = true;
+				logTarget.includeLevel = true;
+				logTarget.fieldSeparator = "|";
+
+				Log.addTarget(logTarget);
+			}
+
+			private function logDebug():void {
+				LOG.debug("button 1 clicked");
+			}
+
+			private function logError():void {
+				LOG.error("button 2 clicked");
+			}
+		]]>
+	</mx:Script>
+	<mx:Button label="Button"
+		click="logDebug();" />
+	<mx:Button label="Button"
+		click="logError();" />
+</mx:Application>

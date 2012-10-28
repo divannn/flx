@@ -1,0 +1,17 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+
+.ProgressManager {
+	modalTransparencyColor: #FFFFFF;
+	modalTransparencyDuration: 400;
+	modalTransparency: 0.5;
+	spinnerColor: #999999;
+	spinnerRate: 50;
+	spinnerMaxLightnessPercent: -70;
+	spinnerMinLightnessPercent: 70;
+	spinnerInnerDiameter: 0;
+	spinnerSegmentWidth: 2;
+	spinnerSegmentCount: 9;
+}

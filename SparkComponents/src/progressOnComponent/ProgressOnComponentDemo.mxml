@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Blocks mouse on componenets and showsprogress propeller. Do not blocks keybard (TODO)-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:components="progressOnComponent.*"
+	viewSourceURL="srcview/index.html"
+	xmlns:progressOnComponent="progressOnComponent.*">
+	<s:layout>
+		<s:VerticalLayout />
+	</s:layout>
+	<fx:Style source="styles/main.css" />
+	<fx:Script>
+		<![CDATA[
+			import mx.events.EffectEvent;
+
+			protected function disableIt(event:MouseEvent):void {
+				detailsForm.disableIt();
+			}
+
+			protected function enableIt(event:MouseEvent):void {
+				detailsForm.enableIt();
+			}
+
+			protected function trashIt(event:MouseEvent):void {
+				detailsForm.dispose();
+				removeElement(detailsForm);
+			}
+		]]>
+	</fx:Script>
+	<s:HGroup width="{detailsForm.width}">
+		<mx:LinkButton label="Disable"
+			click="disableIt(event)" />
+		<mx:Spacer width="100%" />
+		<mx:LinkButton label="Enable"
+			click="enableIt(event)" />
+	</s:HGroup>
+	<progressOnComponent:DetailsForm id="detailsForm" />
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window:Window xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:confirmation="confirmation.*"
+	width="320"
+	xmlns:window="window.*">
+
+	<!--<fx:Metadata>
+		[Event(name="okClicked", type="com.devexperts.flexfront.common.gui.components.events.DialogEvent")]
+		[Event(name="cancelClicked", type="com.devexperts.flexfront.common.gui.components.events.DialogEvent")]
+	</fx:Metadata>-->
+
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var _message:String;
+
+			public function set message(value:String):void {
+				_message = value;
+			}
+
+			[Bindable]
+			private var _description:String;
+
+			public function set description(value:String):void {
+				_description = value;
+			}
+		]]>
+	</fx:Script>
+
+	<s:Group width="100%">
+		<s:layout>
+			<s:VerticalLayout paddingLeft="40"
+				paddingRight="40"
+				paddingTop="20"
+				paddingBottom="20"
+				gap="20" />
+		</s:layout>
+
+		<window:WindowMessage text="{_message}" />
+		<window:WindowDescription text="{_description}" />
+		<window:WindowButtonBar />
+	</s:Group>
+</window:Window>

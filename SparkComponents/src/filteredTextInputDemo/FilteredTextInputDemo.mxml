@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	creationComplete="init();">
+	<s:layout>
+		<s:HorizontalLayout />
+	</s:layout>
+
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+
+			[Bindable]
+			private var dp:ArrayCollection = new ArrayCollection(["item1",
+					"item2", "item3"]);
+
+			private function init():void {
+				new TextInputFilter(sTextInput);
+			}
+		]]>
+	</fx:Script>
+
+	<s:Label text="TextInput:" />
+	<s:TextInput id="sTextInput"
+		changing="trace('TI CHANGING');"
+		change="trace('TI change');"
+		enter="trace('TI enter');" />
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

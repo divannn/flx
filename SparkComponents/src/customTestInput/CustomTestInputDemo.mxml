@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/halo"
+	backgroundColor="0xf4f4f4"
+	xmlns:customTestInput="customTestInput.*">
+
+	<Style>
+		.textInput {
+			focusColor: "0xa2d2ff";
+			color: "0x808080";
+			fontSize: "12";
+			selectionColor: "0xa2d2ff";
+		}
+	</Style>
+
+	<s:HGroup horizontalCenter="0"
+		verticalCenter="0"
+		gap="25">
+		<s:TextInput text="Spark Default" />
+		<customTestInput:AHTextInput id="cf"
+			text="Customized"
+			styleName="textInput"
+			skinClass="customTestInput.AHTextInputSkin"
+			width="100" />
+	</s:HGroup>
+	<Private>
+		<sdk>4.1</sdk>
+	</Private>
+</s:Application>

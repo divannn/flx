@@ -1,0 +1,56 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+/*Main CSS properties demo.*/
+global {
+	/*	The main color for a component. It was renamed from baseColor after Flex 4 Beta 2*/
+	chrome-color: #333333;
+
+	/*	Color of focus ring when the component is in focus*/
+	focus-color: #FF7F29;
+
+	/* For MX components */
+	theme-color: #FF7F29;
+	
+	/*	Color of the fill of an item renderer*/
+	content-background-color: #333333;
+	
+	/*	Color of any symbol of a component. Examples include the check mark of a CheckBox or the arrow of a scroll button*/
+	symbol-color: #FFFFFF;
+	
+	/*	The background color of selected items in a drop down list.*/
+	selection-color: #FFB129;
+	
+	/*  Color for selected text in focused text component*/
+	focusedTextSelectionColor: #F7DCAD;
+	
+	/*	Color of the highlights when the mouse is over the component*/
+	roll-over-color: #F7DCAD;
+	
+	/*	Color of the text*/
+	color: #D7D6D6;
+	
+	/*	Color of the text highlights when the mouse is over the component, used in old MX components.	*/
+	text-roll-over-color: #D7D6D6;
+	
+	/*	Additional color used for accent. This color is used by “emphasized” buttons (default button in Alert box), and the slider track highlight.*/
+	accent-color: #FFB129;
+
+}
+
+s|Panel {
+	background-color: #333333;
+}
+
+mx|Alert {
+	background-color: #333333;
+}
+
+mx|TabNavigator {
+	background-color: #333333;
+}
+
+mx|ToolTip {
+	color: #000000;
+	backgroundColor: #F7DCAD;
+}

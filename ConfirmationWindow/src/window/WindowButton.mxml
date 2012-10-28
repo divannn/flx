@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<s:Button xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		styleName="windowButton"
+		height="{BUTTON_HEIGHT}"
+		minWidth="{MIN_BUTTON_WIDTH}">
+	<fx:Script>
+		<![CDATA[
+		private static const MIN_BUTTON_WIDTH:Number = 90;
+		private static const BUTTON_HEIGHT:Number = 50;
+
+		override public function set width(value:Number):void {
+			if (value < minWidth) {
+				return;
+			}
+			super.width = value;
+		}
+		
+		]]>
+	</fx:Script>
+</s:Button>

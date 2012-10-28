@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:confirmation="confirmation.*"
+	xmlns:window="window.*">
+
+	<fx:Style source="main.css" />
+
+	<fx:Script>
+		<![CDATA[
+			import confirmation.SimpleConfirmation;
+
+			import window.Window;
+
+			protected function button1_clickHandler(event:MouseEvent):void {
+				var w:SimpleConfirmation = new SimpleConfirmation();
+				w.clickOutsideAutoClose = false;
+				w.message = "Modal";
+				w.description = "Some description";
+				w.open(true);
+			}
+
+			protected function button2_clickHandler(event:MouseEvent):void {
+				var w:SimpleConfirmation = new SimpleConfirmation();
+				w.clickOutsideAutoClose = true;
+				w.message = "Non modal auto-closable";
+				w.description = "Some description";
+				w.open(false);
+			}
+		]]>
+	</fx:Script>
+
+
+	<s:layout>
+		<s:HorizontalLayout />
+	</s:layout>
+
+	<s:Button id="button1"
+		label="Open Modal Confirmation"
+		click="button1_clickHandler(event)" />
+
+	<s:Button id="button2"
+		label="Open Auto-closable Confirmation"
+		click="button2_clickHandler(event)" />
+
+	<confirmation:ButtonWithAnchoredWindow />
+
+</s:Application>

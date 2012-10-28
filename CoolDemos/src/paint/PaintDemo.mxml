@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--sdk 4.1-->
+<!-- Allows to draw on canvas and save result image.-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               viewSourceURL="srcview/index.html" xmlns:paint="paint.*">
+  
+  <s:Panel id="p" title="Flex Paint 4" top="5" horizontalCenter="0" width="400" height="400">
+  
+    <paint:DrawingArea id="drawingArea" xmlns="*" width="100%" height="100%"/>
+    
+    <s:controlBarContent>
+        <mx:ColorPicker change="drawingArea.drawColor = event.target.selectedColor"/>
+        <s:Button label="Erase" click="drawingArea.erase()"/>
+        <s:Button label="Save Image" click="drawingArea.save()"/>
+    </s:controlBarContent>
+  </s:Panel>
+  
+</s:Application>

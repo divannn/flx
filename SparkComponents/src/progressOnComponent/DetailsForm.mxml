@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	backgroundColor="#CCCCCC"
+	preinitialize="onPreinitialize(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+
+			import progressOnComponent.progressManagerClasses.ProgressManager;
+			import progressOnComponent.progressManagerClasses.ProgressRegion;
+
+			private var _progressRegionId:String = uid;
+
+			public function disableIt():void {
+				//enabled = false;
+				ProgressManager.showModal(_progressRegionId);
+			}
+
+			public function enableIt():void {
+				//enabled = true;
+				ProgressManager.hideModal(_progressRegionId);
+			}
+
+			public function dispose():void {
+				ProgressManager.removeProgressRegion(_progressRegionId);
+			}
+
+			protected function onPreinitialize(event:FlexEvent):void {
+				var progressRegion:ProgressRegion = new ProgressRegion(_progressRegionId,
+						this);
+				ProgressManager.addProgressRegion(progressRegion);
+			}
+		]]>
+	</fx:Script>
+	<mx:FormItem label="First Name">
+		<s:TextInput />
+	</mx:FormItem>
+	<mx:FormItem label="Last Name">
+		<s:TextInput />
+	</mx:FormItem>
+	<mx:FormItem label="Age">
+		<s:TextInput />
+	</mx:FormItem>
+	<mx:FormItem label="">
+		<s:Button label="Update" />
+	</mx:FormItem>
+</mx:Form>

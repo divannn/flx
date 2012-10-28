@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
+	title="My Dialog"
+	width="200"
+	height="200"
+	showCloseButton="true"
+	close="closeDialog(event);"
+	keyDown="keyDownHandler1(event);">
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import mx.events.CloseEvent;
+
+			private function closeDialog(event:Event):void {
+				// close this dialog.
+				PopUpManager.removePopUp(this);
+			}
+
+			private function keyDownHandler1(evt:KeyboardEvent):void {
+				if (evt.charCode == Keyboard.ESCAPE) {
+					this.dispatchEvent(new CloseEvent(CloseEvent.CLOSE));
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:VBox height="100%"
+		width="100%">
+		<mx:TextInput id="input" />
+		<mx:Button id="ok"
+			label="OK"
+			click="closeDialog(event)" />
+	</mx:VBox>
+</mx:TitleWindow>

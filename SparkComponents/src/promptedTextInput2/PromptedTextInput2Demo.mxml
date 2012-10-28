@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:components="promptedTextInput2.*">
+	<s:HGroup horizontalCenter="0"
+		verticalCenter="0">
+		<components:PromptedTextInput2 prompt="Enter text here" />
+		<s:Button label="Search" />
+	</s:HGroup>
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>

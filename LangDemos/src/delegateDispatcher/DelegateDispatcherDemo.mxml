@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--sdk 4.1-->
+<s:Application xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	minWidth="955"
+	minHeight="600"
+	creationComplete="init();">
+	<fx:Script>
+		<![CDATA[
+			private var model:Model = new Model();
+			
+			private function init():void {
+				model.addEventListener(ModelEvent.EVENT_TYPE, handler);
+			}
+
+			private function click():void {
+				model.setSomething("hi");
+			}
+			
+			private function handler(event:ModelEvent):void {
+				trace("something happend-----------> ");
+				trace("    target: " + event.target + " phase:" + event.eventPhase);
+				trace("    message: " + event.msg);
+			}
+		]]>
+	</fx:Script>
+	<s:Button label="Button"
+		click="click();" />
+	
+</s:Application>

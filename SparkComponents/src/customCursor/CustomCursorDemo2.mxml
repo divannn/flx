@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sets custom cursor for whole application.-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	minWidth="955"
+	minHeight="600">
+	<fx:Script>
+		<![CDATA[
+			private function changePointer():void {
+				this.addEventListener(Event.ENTER_FRAME, onEnterFrame);
+				pointer.visible = true;
+				Mouse.hide();
+			}
+
+			private function onEnterFrame(event:Event):void {
+				trace("size: " + pointer.width + " " + pointer.height);
+
+				pointer.x = stage.mouseX - pointer.width / 2;
+				pointer.y = stage.mouseY - pointer.height / 2;
+				trace("loc: " + pointer.x + " " + pointer.y);
+			}
+
+			private function restorePointer():void {
+				pointer.visible = false;
+				this.removeEventListener(Event.ENTER_FRAME, onEnterFrame);
+				Mouse.show();
+			}
+		]]>
+	</fx:Script>
+
+	<s:Button label="custom pointer"
+		click="changePointer()"
+		x="10"
+		y="50" />
+	<s:Button label="default pointer"
+		click="restorePointer()"
+		x="200"
+		y="50" />
+
+	<mx:Image source="@Embed(source='/customCursor/tool_cursor.png')"
+		mouseEnabled="false"
+		id="pointer"
+		visible="false" />
+	<fx:Private>
+		<sdk>4.1</sdk>
+	</fx:Private>
+</s:Application>
