@@ -1,0 +1,27 @@
+		public static function format(d:Date) :String {
+			var f:DateFormatter = new DateFormatter();
+			f.formatString = "HH:NN";
+			return f.format(d);
+        }
+
+
+class ExceptionTracer {
+    public static function getST(err:Error):String {
+        return err.getStackTrace();
+    }
+}
+
+public class Assert {
+  // call enabled before calling assert().  This value is 
+  // usually tied to a constants file where the value 
+  // can be tokenized and turned off in production
+  public static const enabled:Boolean = true;
+
+  public static function assert(assertion:Boolean, 
+      msg:String = null):void {
+    if (! assertion) {
+      throw new Error("An assertion failed" + 
+          (msg ? (": " + msg) : "."));
+    }
+  }
+}
