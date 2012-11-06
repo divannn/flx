@@ -1,26 +1,59 @@
-package util {
 
+package
+{
 	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
 	import flash.utils.getQualifiedClassName;
 
-	import mx.utils.StringUtil;
-
-	public class PrintDisplayList {
-		private var tabCount:int;
-		private var tabChar:String = " ";
-
-		public function printHierarchy(comp:DisplayObject):void {
-			trace("--------------------------------------- display list hierarchy for: " + getQualifiedClassName(comp));
-			hierarchy(comp);
+	public class PrintDisplayList
+	{
+		private static var nestLevel:int = 0;
+		private static var tabChar:String = " ";
+		
+		public static function printHierarchyUp(comp:DisplayObject):void {
+			nestLevel = 0;
+			trace("--------------------------------------- display list up hierarchy for: " + getQualifiedClassName(comp));
+			hierarchyUp(comp);
 		}
-
-		private function hierarchy(comp:DisplayObject):void {
+		
+		private static function hierarchyUp(comp:DisplayObject):void {
 			if (!comp) {
 				return;
 			}
-			hierarchy(comp.parent);
-			var tabPrefix:String = StringUtil.repeat(tabChar, tabCount++);
-			trace(tabPrefix + getQualifiedClassName(comp));
+			hierarchyUp(comp.parent);
+			var tabPrefix:String = repeat(tabChar, nestLevel++);
+			trace(tabPrefix + getQualifiedClassName(comp) + "|" + comp.name);
+		}
+		
+		public static function printHierarchyDown(comp:DisplayObjectContainer):void {
+			nestLevel = 0;
+			trace("--------------------------------------- display list down hierarchy for: " + getQualifiedClassName(comp));
+			hierarchyDown(comp);
+		}
+		
+		private static function hierarchyDown(comp:DisplayObjectContainer):void {
+			if (!comp) {
+				return;
+			}
+			var tabPrefix:String = repeat(tabChar, nestLevel);
+			for (var j:int = 0; j < comp.numChildren; j++) {
+				var nextChild:DisplayObject = comp.getChildAt(j);
+				trace(tabPrefix + getQualifiedClassName(nextChild) + "|" + nextChild.name);
+				if (nextChild is DisplayObjectContainer) {
+					nestLevel++;
+					hierarchyDown(DisplayObjectContainer(nextChild));
+					nestLevel--;
+				}
+			}
+		}
+		
+		private static function repeat(tabChar:String, tabCount:int):String {
+			var result:String = "";
+			var tabSize:int = 4;
+			for (var i:int = 0; i < tabCount*tabSize; i++) {
+				result += tabChar;
+			}
+			return result;
 		}
 
 	}
